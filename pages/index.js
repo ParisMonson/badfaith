@@ -31,7 +31,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className={"bg-gray-900 text-white min-h-screen"}>
       <Head>
         <title>Badfaith</title>
         <link rel="icon" href="/dog.png" />
@@ -39,7 +39,7 @@ export default function Home() {
 
       <main className={""}>
         <img src="/dog.png" className={""} />
-        <h3>Evaluate Document</h3>
+        <h3 className={"text-xl"}>Evaluate Document</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
