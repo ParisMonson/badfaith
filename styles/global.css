@@ -15,7 +15,7 @@
   @apply justify-center text-center align-middle flex flex-col;
 }
 .input_box {
-  @apply h-48 w-96 text-black;
+  @apply h-48 w-96 text-black bg-gray-300;
 }
 .submit_btn {
   @apply bg-green-700 border-none text-white px-8 py-4 text-center;
@@ -26,6 +26,6 @@
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl;
+  @apply p-4 bg-gray-950 text-white text-xl ;
 }
 
