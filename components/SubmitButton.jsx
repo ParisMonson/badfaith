@@ -1,11 +1,11 @@
-export default function SubmitButton({ onClick, children }) {
+export default function SubmitButton({ onClick, children, width, height }) {
   return (
     <button
-      className="bg-green-700 border-none text-white px-8 py-4 text-center cursor-pointer text-base m-1 font-bold transition duration-400"
+      className='submit_btn w-40'
       onClick={onClick}
     >
       {children}
-    </button>
+    </button >
   );
 };
 

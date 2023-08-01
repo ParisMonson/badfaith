@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import SubmitButton from "../components/SubmitButton";
 import TextAreaInput from "../components/TextAreaInput";
+import Header from "../components/Header";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState('');
@@ -53,17 +54,16 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      <header className="header">
-        <h1>Badfaith</h1>
-      </header>
+      <Header />
 
       <main className={"main_container"}>
         <div className={"main_input_section"}>
           <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
-          <form className={"flex flex-col"} onSubmit={handleSubmit}>
+          <form className={"flex flex-col items-center m-3"} onSubmit={handleSubmit}>
             <TextAreaInput value={textAreaValue} onChange={handleChange} />
-            <SubmitButton onClick={handleClick}>Click me</SubmitButton>
-
+            <div className="m-3">
+              <SubmitButton onClick={handleClick}>Submit</SubmitButton>
+            </div>
           </form>
 
         </div>

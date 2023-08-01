@@ -15,11 +15,11 @@
   @apply justify-center text-center align-middle flex flex-col;
 }
 .input_box {
-  @apply h-96 w-96 text-black;
+  @apply h-48 w-96 text-black;
 }
 .submit_btn {
   @apply bg-green-700 border-none text-white px-8 py-4 text-center;
-  @apply  cursor-pointer text-base m-1 font-bold;
+  @apply  cursor-pointer text-base m-1 font-bold rounded-full;
   transition-duration: 0.4s;
 }
 .submit_btn:hover {
