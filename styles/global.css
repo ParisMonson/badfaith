@@ -4,8 +4,7 @@
 
 
 .body {
-  margin: 0;
-  padding: 0;
+  @apply m-0 p-0 bg-gray-900 text-white
 }
 
 .main_container {
@@ -27,5 +26,8 @@
 }
 .header {
   @apply p-4 bg-gray-950 text-white text-xl ;
+}
+.sidebar {
+  @apply overflow-auto h-[90vh] w-1/5 fixed top-[10vh] ;
 }
 

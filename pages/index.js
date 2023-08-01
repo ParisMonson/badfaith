@@ -3,10 +3,12 @@ import { useState } from "react";
 import SubmitButton from "../components/SubmitButton";
 import TextAreaInput from "../components/TextAreaInput";
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState('');
   const [result, setResult] = useState();
+  const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -32,6 +34,7 @@ export default function Home() {
       alert(error.message);
     }
   }
+  const titles = ["Item 1", "Item 2", "Item 3"];
 
   function handleClick() {
     console.log("Click")
@@ -55,7 +58,7 @@ export default function Home() {
       </Head>
 
       <Header />
-
+      <Sidebar listItems={titles} />
       <main className={"main_container"}>
         <div className={"main_input_section"}>
           <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
