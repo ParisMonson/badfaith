@@ -31,26 +31,28 @@ export default function Home() {
   }
 
   return (
-    <div className={"bg-gray-900 text-white min-h-screen"}>
+    <div className="body">
       <Head>
         <title>Badfaith</title>
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      <main className={""}>
-        <img src="/dog.png" className={""} />
-        <h3 className={"text-xl"}>Evaluate Document</h3>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="animal"
-            placeholder="Enter an animal"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-        <div className={""}>{result}</div>
+      <main className={"main_container"}>
+        <div className={"main_input_section"}>
+          <h3 className={"text-xl"}>Evaluate Document</h3>
+          <form className={"flex flex-col"} onSubmit={onSubmit}>
+            <textarea
+              type="text"
+              name="animal"
+              placeholder="Paste your text here..."
+              value={animalInput}
+              onChange={(e) => setAnimalInput(e.target.value)}
+              className={"input_box"}
+            />
+            <input className={"submit_btn"} type="submit" value="Analyse" />
+          </form>
+          <div className={""}>{result}</div>
+        </div>
       </main>
     </div>
   );

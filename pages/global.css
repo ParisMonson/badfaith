@@ -1,3 +1,28 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  @apply bg-gray-900 text-white min-h-screen flex justify-center;
+}
+.main_input_section {
+  @apply justify-center text-center align-middle flex flex-col;
+}
+.input_box {
+  @apply h-96 w-96 text-black;
+}
+.submit_btn {
+  @apply bg-green-500 border-none text-white px-8 py-4 text-center;
+  @apply  cursor-pointer text-base m-1;
+  transition-duration: 0.4s;
+}
+.submit_btn:hover {
+  background-color: #45a049;
+}
+
