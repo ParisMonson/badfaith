@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { useState } from "react";
+import SubmitButton from "../components/SubmitButton";
+import TextAreaInput from "../components/TextAreaInput";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [textAreaValue, setTextAreaValue] = useState('');
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
@@ -13,7 +15,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ article: textAreaValue }),
       });
 
       const data = await response.json();
@@ -22,13 +24,27 @@ export default function Home() {
       }
 
       setResult(data.result);
-      setAnimalInput("");
+      setTextAreaValue("");
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
   }
+
+  function handleClick() {
+    console.log("Click")
+  }
+
+  const handleChange = (e) => {
+    setTextAreaValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(e);
+    setTextAreaValue('');
+  };
 
   return (
     <div className="body">
@@ -37,22 +53,22 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
+      <header className="header">
+        <h1>Badfaith</h1>
+      </header>
+
       <main className={"main_container"}>
         <div className={"main_input_section"}>
-          <h3 className={"text-xl"}>Evaluate Document</h3>
-          <form className={"flex flex-col"} onSubmit={onSubmit}>
-            <textarea
-              type="text"
-              name="animal"
-              placeholder="Paste your text here..."
-              value={animalInput}
-              onChange={(e) => setAnimalInput(e.target.value)}
-              className={"input_box"}
-            />
-            <input className={"submit_btn"} type="submit" value="Analyse" />
+          <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
+          <form className={"flex flex-col"} onSubmit={handleSubmit}>
+            <TextAreaInput value={textAreaValue} onChange={handleChange} />
+            <SubmitButton onClick={handleClick}>Click me</SubmitButton>
+
           </form>
-          <div className={""}>{result}</div>
+
         </div>
+
+        <div className={""}>{result}</div>
       </main>
     </div>
   );

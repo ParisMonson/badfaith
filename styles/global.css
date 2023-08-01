@@ -18,11 +18,14 @@
   @apply h-96 w-96 text-black;
 }
 .submit_btn {
-  @apply bg-green-500 border-none text-white px-8 py-4 text-center;
-  @apply  cursor-pointer text-base m-1;
+  @apply bg-green-700 border-none text-white px-8 py-4 text-center;
+  @apply  cursor-pointer text-base m-1 font-bold;
   transition-duration: 0.4s;
 }
 .submit_btn:hover {
   background-color: #45a049;
+}
+.header {
+  @apply p-4 bg-gray-950 text-white text-xl;
 }
 
