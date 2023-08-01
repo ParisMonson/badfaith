@@ -15,7 +15,7 @@
   @apply justify-center text-center align-middle flex flex-col;
 }
 .input_box {
-  @apply h-48 w-96 text-black bg-gray-300;
+  @apply h-48 w-96 text-black bg-gray-300 p-1;
 }
 .submit_btn {
   @apply bg-green-700 border-none text-white px-8 py-4 text-center;
