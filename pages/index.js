@@ -78,7 +78,8 @@ export default function Home() {
 
 
           {result ?
-            <><div className={"text-white"}>Result</div><div className={"text-white"}>{result}</div></>
+            <><div className={"text-white"}>Result</div>
+              <p className={"text-white whitespace-pre-line"}>{result}</p></>
             :
             null
           }
