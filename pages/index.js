@@ -75,9 +75,18 @@ export default function Home() {
             </div>
           </form>
 
+
+
+          {result ?
+            <><div className={"text-white"}>Result</div><div className={"text-white"}>{result}</div></>
+            :
+            null
+          }
+
+
         </div>
 
-        <div className={"text-white"}>{result}</div>
+
       </main>
     </div>
   );
