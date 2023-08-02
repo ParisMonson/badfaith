@@ -62,7 +62,11 @@ export default function Home() {
       </Head>
 
       <Header />
+
+
+
       <Sidebar listItems={titles} />
+
       <main className={"main_container"}>
         <div className={"main_input_section"}>
           <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
@@ -78,8 +82,10 @@ export default function Home() {
 
 
           {result ?
-            <><div className={"text-white"}>Result</div>
-              <p className={"text-white whitespace-pre-line"}>{result}</p></>
+            <div className="result_area flex flex-col items-center text-center">
+              <div className={"text-white"}>Result</div>
+              <p className={"text-white whitespace-pre-line"}>{result}</p>
+            </div>
             :
             null
           }
@@ -89,6 +95,7 @@ export default function Home() {
 
 
       </main>
+
     </div>
   );
 }

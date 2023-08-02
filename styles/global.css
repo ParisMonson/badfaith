@@ -8,7 +8,7 @@
 }
 
 .main_container {
-  @apply bg-gray-900 text-white min-h-screen flex justify-center;
+  @apply bg-gray-900 text-white min-h-screen flex justify-start ml-1/5;
 }
 .main_input_section {
   @apply justify-center text-center align-middle flex flex-col;
@@ -28,7 +28,7 @@
   @apply p-4 bg-gray-950 text-white text-xl ;
 }
 .sidebar {
-  @apply overflow-auto h-[90vh] w-1/5 fixed top-[10vh] ;
+  @apply h-[90vh] w-1/5 fixed top-[10vh] left-0  ;
 }
 
 
@@ -38,13 +38,14 @@
 }
 
 .spinner {
+  @apply rounded-full w-6 h-6 m-auto;
   border: 2px solid #f3f3f3; /* Light grey */
   border-top: 2px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
   animation: spin 2s linear infinite;
-  margin: 0 auto;
+}
+
+.result_area {
+
 }
 
 
