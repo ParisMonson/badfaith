@@ -16,7 +16,6 @@ export default async function (req, res) {
   }
 
   const article = req.body.article || '';
-  console.log(article);
   if (article.trim().length === 0) {
     res.status(400).json({
       error: {
@@ -50,5 +49,22 @@ export default async function (req, res) {
 }
 
 function generatePrompt(article) {
-  return `Analyze this article for bias and badfaith ${article}.`
+  return `You are going to analyse articles for the following manipulation tactics and logical fallacies.
+  1. Ad Hominem
+  2. Strawman
+  3. Appeal to Authority
+  4. False Dichotomy
+  5. Slippery Slope
+  6. Confirmation Bias
+  7. Bandwagon
+
+  Your job is to use all of your relevant expertise to generate a report with a "badfaith" score. The more the article
+  has the above listed tactics. The higher its badfaith rating will be up to a max of 100. The report will highlight
+  areas of the article that fit any of the above criteria and may also suggest for the user to do further research as
+  certain things in the article may only be badfaith with further context. The report will then summarise at the end.
+  Article: ${article}`;
 };
+
+
+
+

@@ -8,10 +8,12 @@ import Sidebar from "../components/Sidebar";
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState('');
   const [result, setResult] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
 
   async function onSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -32,6 +34,8 @@ export default function Home() {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
+    } finally {
+      setIsLoading(false);
     }
   }
   const titles = ["Item 1", "Item 2", "Item 3"];
@@ -65,13 +69,15 @@ export default function Home() {
           <form className={"flex flex-col items-center m-3"} onSubmit={handleSubmit}>
             <TextAreaInput value={textAreaValue} onChange={handleChange} />
             <div className="m-3">
-              <SubmitButton onClick={handleClick}>Submit</SubmitButton>
+              <SubmitButton onClick={handleClick}>
+                {isLoading ? <div className="spinner" /> : 'Submit'}
+              </SubmitButton>
             </div>
           </form>
 
         </div>
 
-        <div className={""}>{result}</div>
+        <div className={"text-white"}>{result}</div>
       </main>
     </div>
   );
