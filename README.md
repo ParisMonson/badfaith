@@ -1,3 +1,5 @@
+## Tech Stack
+
 ![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=openai&logoColor=white)
 
 Currently in progress.
