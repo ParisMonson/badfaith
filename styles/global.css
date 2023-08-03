@@ -11,7 +11,7 @@
   @apply bg-gray-900 text-white flex flex-grow overflow-auto justify-start ml-1/5;
 }
 .main_input_section {
-  @apply justify-start text-center align-middle flex flex-col mt-20 mx-6;
+  @apply justify-start text-center align-middle flex flex-col flex-grow mt-20 mx-6;
 }
 .input_box {
   @apply h-48 w-96 text-black bg-gray-300 p-1;
