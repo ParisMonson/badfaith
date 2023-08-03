@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-
+import { saveRecord } from '../../utils/db';
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -31,7 +31,8 @@ export default async function (req, res) {
       messages: [{ "role": "user", "content": generatePrompt(article) }],
       temperature: 0.6,
     });
-    console.log("Completion: ", completion.data.choices[0].text, completion.data.choices[0]);
+    console.log("Saving record")
+    await saveRecord();
     res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
     if (error.response) {

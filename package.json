@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.1",
     "next": "^13.1.1",
     "openai": "^3.1.0",
     "postcss": "^8.4.27",
