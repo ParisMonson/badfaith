@@ -25,6 +25,8 @@ async function connectToDatabase() {
     serverApi: ServerApiVersion.v1
   });
 
+  let database;
+
   try {
     await client.connect();
     console.log('Connected to database');
