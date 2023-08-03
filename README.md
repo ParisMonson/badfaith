@@ -1,8 +1,15 @@
+Currently in progress.
+
 ## Tech Stack
 
 ![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=openai&logoColor=white)
+![Next.js](https://img.shields.io/badge/-Next.js-black?style=flat-square&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/-Node.js-black?style=flat-square&logo=node.js&logoColor=white)
 
-Currently in progress.
+
+
+
 
 Deployed at: https://badfaith.vercel.app/
 
