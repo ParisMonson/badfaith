@@ -55,7 +55,7 @@ export default function Home() {
   };
 
   return (
-    <div className="body">
+    <div className="body flex flex-col h-screen">
       <Head>
         <title>Badfaith</title>
         <link rel="icon" href="/dog.png" />
@@ -64,37 +64,41 @@ export default function Home() {
       <Header />
 
 
-
-      <Sidebar listItems={titles} />
-
-      <main className={"main_container"}>
-        <div className={"main_input_section"}>
-          <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
-          <form className={"flex flex-col items-center m-3"} onSubmit={handleSubmit}>
-            <TextAreaInput value={textAreaValue} onChange={handleChange} />
-            <div className="m-3">
-              <SubmitButton onClick={handleClick}>
-                {isLoading ? <div className="spinner" /> : 'Submit'}
-              </SubmitButton>
-            </div>
-          </form>
+      <div className="flex-grow flex flex-row overflow-hidden">
+        <Sidebar listItems={titles} />
 
 
 
-          {result ?
-            <div className="result_area flex flex-col items-center text-center">
-              <div className={"text-white"}>Result</div>
-              <p className={"text-white whitespace-pre-line"}>{result}</p>
-            </div>
-            :
-            null
-          }
+
+        <main className={"main_container"}>
+          <div className={"main_input_section"}>
+            <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
+            <form className={"flex flex-col items-center m-3"} onSubmit={handleSubmit}>
+              <TextAreaInput value={textAreaValue} onChange={handleChange} />
+              <div className="m-3">
+                <SubmitButton onClick={handleClick}>
+                  {isLoading ? <div className="spinner" /> : 'Submit'}
+                </SubmitButton>
+              </div>
+            </form>
 
 
-        </div>
+
+            {result ?
+              <div className="result_area flex flex-col items-center text-center">
+                <div className={"text-white font-extrabold text-xl tracking-tight "}>Result</div>
+                <p className={"text-white whitespace-pre-line"}>{result}</p>
+              </div>
+              :
+              null
+            }
 
 
-      </main>
+          </div>
+
+
+        </main>
+      </div>
 
     </div>
   );

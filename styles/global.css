@@ -4,14 +4,14 @@
 
 
 .body {
-  @apply m-0 p-0 bg-gray-900 text-white
+  @apply m-0 p-0 bg-gray-900 text-white;
 }
 
 .main_container {
-  @apply bg-gray-900 text-white min-h-screen flex justify-start ml-1/5;
+  @apply bg-gray-900 text-white flex flex-grow overflow-auto justify-start ml-1/5;
 }
 .main_input_section {
-  @apply justify-center text-center align-middle flex flex-col;
+  @apply justify-start text-center align-middle flex flex-col mt-20 mx-6;
 }
 .input_box {
   @apply h-48 w-96 text-black bg-gray-300 p-1;
@@ -25,10 +25,10 @@
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl ;
+  @apply p-4 bg-gray-950 text-white text-xl;
 }
 .sidebar {
-  @apply h-[90vh] w-1/5 fixed top-[10vh] left-0  ;
+  @apply h-full w-1/5 fixed top-16 left-0;
 }
 
 
