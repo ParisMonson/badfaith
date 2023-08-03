@@ -1,4 +1,4 @@
-export default function Sidebar({ listItems, title = 'History', }) {
+export default function Sidebar({ listItems, title ='Reports', }) {
   return (
     <div className={"sidebar text-center border"} >
       <h1 className={"text-xl underline"}>{title}</h1>
