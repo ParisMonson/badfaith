@@ -1,11 +1,13 @@
 Currently in progress.
 
 ## Tech Stack
-
-![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=openai&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb&logoColor=white)
 ![Next.js](https://img.shields.io/badge/-Next.js-black?style=flat-square&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
 ![Node.js](https://img.shields.io/badge/-Node.js-black?style=flat-square&logo=node.js&logoColor=white)
+![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=openai&logoColor=white)
+
+
 
 
 
