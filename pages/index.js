@@ -5,10 +5,11 @@ import TextAreaInput from "../components/TextAreaInput";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
-import { useSession, signIn, signOut } from "next-auth/react"
+import Report from "../components/Report";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
-  const [textAreaValue, setTextAreaValue] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState("");
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
@@ -28,7 +29,10 @@ export default function Home() {
 
       const data = await response.json();
       if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
+        throw (
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
+        );
       }
 
       setResult(data.result);
@@ -44,7 +48,7 @@ export default function Home() {
   const titles = ["Item 1", "Item 2", "Item 3"];
 
   function handleClick() {
-    console.log("Click")
+    console.log("Click");
   }
 
   const handleChange = (e) => {
@@ -54,7 +58,7 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(e);
-    setTextAreaValue('');
+    setTextAreaValue("");
   };
 
   return (
@@ -66,45 +70,47 @@ export default function Home() {
 
       <Header />
 
-
-      <div className="flex-grow flex flex-row overflow-auto">
+      <div className="main_content">
         <Sidebar listItems={titles} />
-
-
-
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>
-            <h1 className={"text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"}>Evaluate Document</h1>
-            <form className={"flex flex-col items-center m-3"} onSubmit={handleSubmit}>
+            <h1
+              className={
+                "text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"
+              }
+            >
+              Evaluate Document
+            </h1>
+            <form
+              className={"flex flex-col items-center m-3"}
+              onSubmit={handleSubmit}
+            >
               <TextAreaInput value={textAreaValue} onChange={handleChange} />
               <div className="m-3">
                 <SubmitButton onClick={handleClick}>
-                  {isLoading ? <div className="spinner" /> : 'Submit'}
+                  {isLoading ? <div className="spinner" /> : "Submit"}
                 </SubmitButton>
               </div>
             </form>
 
-
-
-            {result ?
+            {result ? (
               <div className="result_area flex flex-col items-center text-center">
-                <div className={"text-white font-extrabold text-xl tracking-tight "}>Result</div>
-                <p className={"text-white whitespace-pre-line"}>{result}</p>
+                <div
+                  className={
+                    "text-white font-extrabold text-xl tracking-tight underline"
+                  }
+                >
+                  Result
+                </div>
+                <Report result={result} />
               </div>
-              :
-              null
-            }
-
-
+            ) : null}
           </div>
-
-
         </main>
       </div>
 
-      <Footer/>
-
+      <Footer />
     </div>
   );
 }

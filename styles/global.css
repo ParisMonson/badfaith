@@ -7,7 +7,7 @@
 }
 
 .main_container {
-  @apply bg-gray-900 text-white flex flex-grow overflow-auto justify-start ml-1/5;
+  @apply bg-gray-900 text-white flex flex-grow overflow-auto justify-start  pt-16;
 }
 .main_input_section {
   @apply justify-start text-center align-middle flex flex-col flex-grow mt-20 mx-6;
@@ -24,10 +24,13 @@
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl  top-0 w-full;
+  @apply p-4 bg-gray-950 text-white text-xl fixed top-0 z-10 w-full;
+}
+.footer {
+  @apply p-4 bg-gray-950 h-16 text-start flex items-center justify-between;
 }
 .sidebar {
-  @apply h-full w-1/5 fixed top-16 left-0;
+  @apply w-[784px] mt-16;
 }
 
 @keyframes spin {
@@ -46,6 +49,6 @@
   animation: spin 2s linear infinite;
 }
 
-.footer {
-  @apply p-4 bg-gray-950 h-24 text-start flex items-center justify-between;
+.main_content {
+  @apply flex-grow flex flex-row overflow-auto h-full;
 }
