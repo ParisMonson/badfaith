@@ -1,7 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .body {
   @apply m-0 p-0 bg-gray-900 text-white;
@@ -18,23 +17,26 @@
 }
 .submit_btn {
   @apply bg-green-700 border-none text-white px-8 py-4 text-center;
-  @apply  cursor-pointer text-base m-1 font-bold rounded-full;
+  @apply cursor-pointer text-base m-1 font-bold rounded-full;
   transition-duration: 0.4s;
 }
 .submit_btn:hover {
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl;
+  @apply p-4 bg-gray-950 text-white text-xl fixed top-0 w-full;
 }
 .sidebar {
   @apply h-full w-1/5 fixed top-16 left-0;
 }
 
-
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
@@ -44,8 +46,6 @@
   animation: spin 2s linear infinite;
 }
 
-.result_area {
-
+.footer {
+  @apply p-4 bg-gray-950 h-24 text-start flex items-center justify-between;
 }
-
-
