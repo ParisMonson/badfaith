@@ -67,7 +67,7 @@ export default function Home() {
       <Header />
 
 
-      <div className="flex-grow flex flex-row overflow-hidden">
+      <div className="flex-grow flex flex-row overflow-auto">
         <Sidebar listItems={titles} />
 
 
