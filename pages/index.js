@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div className="body flex flex-col h-screen">
+    <div className="body">
       <Head>
         <title>Badfaith</title>
         <link rel="icon" href="/dog.png" />

@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 .body {
-  @apply m-0 p-0 bg-gray-900 text-white;
+  @apply m-0 p-0 bg-gray-900 text-white flex flex-col h-screen;
 }
 
 .main_container {
@@ -24,7 +24,7 @@
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl fixed top-0 w-full;
+  @apply p-4 bg-gray-950 text-white text-xl  top-0 w-full;
 }
 .sidebar {
   @apply h-full w-1/5 fixed top-16 left-0;
