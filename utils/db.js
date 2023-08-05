@@ -1,10 +1,9 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const mongoose = require("mongoose");
 
 let cachedDb = null;
 
-const certificate = 'X509-cert-1515475297667010122.pem'
-
+const certificate = "X509-cert-1515475297667010122.pem";
 
 export async function saveRecord(data) {
   const db = await connectToDatabase();
@@ -14,18 +13,19 @@ export async function getRecords() {
   const collection = db.collection("sample_training");
 }
 
-
 async function connectToDatabase() {
   if (cachedDb) {
     return cachedDb;
   }
 
-  const client = new MongoClient('mongodb+srv://badfaith.i5h083e.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority', {
-    sslKey: certificate,
-    sslCert: certificate,
-    serverApi: ServerApiVersion.v1
-  });
-
+  const client = new MongoClient(
+    "mongodb+srv://badfaith.i5h083e.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority",
+    {
+      sslKey: certificate,
+      sslCert: certificate,
+      serverApi: ServerApiVersion.v1,
+    }
+  );
 
   let db;
 

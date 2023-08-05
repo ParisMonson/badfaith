@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
+import AppNameLogo from "../components/AppNameLogo";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
@@ -75,6 +76,7 @@ export default function Home() {
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>
+            <AppNameLogo />
             <h1
               className={
                 "text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"

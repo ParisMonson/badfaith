@@ -1,5 +1,5 @@
 export default function Report({result}) {
   return (
-    <p className={"text-white whitespace-pre-line"}>{result}</p>
+    <p className={"report"}>{result}</p>
   );
 };

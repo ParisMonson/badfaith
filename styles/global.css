@@ -30,7 +30,7 @@
   @apply p-4 bg-gray-950 h-16 text-start flex items-center justify-between;
 }
 .sidebar {
-  @apply w-[784px] mt-16;
+  @apply w-[284px] mt-16;
 }
 
 @keyframes spin {
@@ -51,4 +51,8 @@
 
 .main_content {
   @apply flex-grow flex flex-row overflow-auto h-full;
+}
+
+.report {
+  @apply text-white whitespace-pre-line;
 }
