@@ -76,10 +76,10 @@ export default function Home() {
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>
-            <AppNameLogo />
+            {/* <AppNameLogo /> */}
             <h1
               className={
-                "text-xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"
+                "text-xl font-extrabold  tracking-tight dark:text-zinc-200"
               }
             >
               Evaluate Document

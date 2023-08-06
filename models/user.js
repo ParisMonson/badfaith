@@ -10,12 +10,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   password: { type: String, required: true },
-  phoneNumber: { type: String },
-  image: { type: String, data: Buffer },
-  signupDate: {
-    type: Date,
-    default: () => Date.now(),
-  },
 });
 
 const User = mongoose.model("User", UserSchema);
