@@ -10,6 +10,10 @@
     "db": "docker run --name badfaith-mongo-dev -d mongo:latest"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/material": "^5.14.3",
     "autoprefixer": "^10.4.14",
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.1",
