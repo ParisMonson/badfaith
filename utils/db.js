@@ -1,6 +1,4 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const mongoose = require("mongoose");
-
 let cachedDb = null;
 
 const certificate = "X509-cert-1515475297667010122.pem";
@@ -12,6 +10,27 @@ export async function getRecords() {
   const db = await connectToDatabase();
   const collection = db.collection("sample_training");
 }
+export async function getSingleRecord() {
+  const db = await connectToDatabase();
+  const collection = db.collection("sample_training");
+}
+export async function saveUser(data) {
+  const db = await connectToDatabase();
+}
+
+/////
+
+export async function getUser(email) {
+  const db = await connectToDatabase();
+  const collection = db.collection("users");
+  const user = await collection.findOne({ email: email });
+  if (user) {
+    console.log("User:", user.email);
+  }
+  return user;
+}
+
+/////////////
 
 async function connectToDatabase() {
   if (cachedDb) {
@@ -31,10 +50,9 @@ async function connectToDatabase() {
 
   try {
     await client.connect();
-    db = client.db("badfaith");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    db = client.db("badfaith-development");
+  } catch (error) {
+    console.log("Error: ", error);
   }
 
   cachedDb = db;
