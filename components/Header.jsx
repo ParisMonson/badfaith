@@ -1,10 +1,11 @@
-import Button from '@mui/material/Button';
+import LoginButton from './LoginButton';
 
 export default function Header() {
   return (
     <header className="header">
       <h1>Badfaith</h1>
-    <Button variant="outlined">Log in</Button>
+    <LoginButton variant="outlined">Log in</LoginButton>
     </header>
   );
 };
+
