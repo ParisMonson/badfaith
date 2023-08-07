@@ -1,13 +1,14 @@
 import { handleAuth, handleCallback } from "@auth0/nextjs-auth0";
-import { saveRecord, getUser } from "../../../utils/db";
+import { saveRecord, getUser, createUser } from "../../../utils/db";
 
 const afterCallback = (req, res, session, state) => {
-  console.log("afterCallback:", req);
-  console.log("session: ", session);
-  console.log("state: ", state);
   getUser(session.user.email)
     .then((user) => {
-      console.log("user: ", user);
+      if (user) {
+        return session;
+      } else {
+        createUser(session.user.email);
+      }
     })
     .catch((err) => {
       console.error(err);

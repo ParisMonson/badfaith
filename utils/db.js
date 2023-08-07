@@ -18,12 +18,20 @@ export async function saveUser(data) {
   const db = await connectToDatabase();
 }
 
+export async function createUser(email) {
+  const db = await connectToDatabase();
+  const users = db.collection("users");
+  const result = await users.insertOne({ email: email });
+  console.log("Inserted user with ID:", result.insertedId);
+  return result;
+}
+
 /////
 
 export async function getUser(email) {
   const db = await connectToDatabase();
-  const collection = db.collection("users");
-  const user = await collection.findOne({ email: email });
+  const users = db.collection("users");
+  const user = await users.findOne({ email: email });
   if (user) {
     console.log("User:", user.email);
   }
