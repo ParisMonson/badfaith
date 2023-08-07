@@ -12,12 +12,15 @@ export default function Header() {
   return (
     <header className="header">
       <h1>Badfaith</h1>
+      <div className="flex gap-4">
+        <h2>{user?.email}</h2>
       { !user ? (
-        <LoginButton variant="outlined">Log in</LoginButton>
+        <LoginButton variant="outlined"/>
       ) : (
-        <LogoutButton variant="outlined">Log out</LogoutButton>
+        <LogoutButton variant="outlined"/>
       )
       }
+      </div>
     </header>
   );
 };

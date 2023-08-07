@@ -89,7 +89,7 @@ export default function Home() {
               <TextAreaInput value={textAreaValue} onChange={handleChange} />
               <div className="m-3">
                 <SubmitButton onClick={handleClick}>
-                  {isLoading ? <div className="spinner" /> : "Submit"}
+                  {isLoading ? <div className="spinner" /> : "Analyse"}
                 </SubmitButton>
               </div>
             </form>

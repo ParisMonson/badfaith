@@ -37,6 +37,10 @@ h1 {
   @apply text-slate-200 font-extrabold;
 }
 
+h2 {
+  @apply text-slate-200 font-semibold text-lg;
+}
+
 p {
   @apply text-slate-200 font-serif;
 }
