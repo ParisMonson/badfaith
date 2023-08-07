@@ -7,14 +7,12 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
 import AppNameLogo from "../components/AppNameLogo";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
-  const { data: session } = useSession();
 
   async function onSubmit(event) {
     event.preventDefault();
