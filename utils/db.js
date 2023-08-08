@@ -3,14 +3,32 @@ let cachedDb = null;
 
 const certificate = "X509-cert-1515475297667010122.pem";
 
-export async function saveRecord(data) {
+export async function createReport(userEmail, reportData) {
   const db = await connectToDatabase();
+  const reports = db.collection("reports");
+  const users = db.collection("users");
+  const user = await users.findOne({ email: userEmail });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const report = {
+    content: reportData,
+    userId: user._id,
+  };
+
+  const result = await reports.insertOne(report);
+
+  console.log("Inserted record with ID:", result.insertedId);
+  return result;
 }
-export async function getRecords() {
+
+export async function getReports() {
   const db = await connectToDatabase();
   const collection = db.collection("sample_training");
 }
-export async function getSingleRecord() {
+export async function getSingleReport() {
   const db = await connectToDatabase();
   const collection = db.collection("sample_training");
 }
@@ -22,7 +40,6 @@ export async function createUser(email) {
   const db = await connectToDatabase();
   const users = db.collection("users");
   const result = await users.insertOne({ email: email });
-  console.log("Inserted user with ID:", result.insertedId);
   return result;
 }
 

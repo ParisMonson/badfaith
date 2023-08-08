@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import SubmitButton from "../components/SubmitButton";
 import TextAreaInput from "../components/TextAreaInput";
 import Header from "../components/Header";
@@ -11,19 +12,26 @@ import AppNameLogo from "../components/AppNameLogo";
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [result, setResult] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [awaitingResult, setAwaitingResult] = useState(false);
   const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
+  const { user, isLoading, error } = useUser();
 
   async function onSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    setAwaitingResult(true);
+    let userEmail = "";
+
+    if (!isLoading && user) {
+      userEmail = user.email;
+    }
+
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ article: textAreaValue }),
+        body: JSON.stringify({ article: textAreaValue, userEmail: userEmail }),
       });
 
       const data = await response.json();
@@ -41,7 +49,7 @@ export default function Home() {
       console.error(error);
       alert(error.message);
     } finally {
-      setIsLoading(false);
+      setAwaitingResult(false);
     }
   }
   const titles = ["Item 1", "Item 2", "Item 3"];
@@ -89,7 +97,7 @@ export default function Home() {
               <TextAreaInput value={textAreaValue} onChange={handleChange} />
               <div className="m-3">
                 <SubmitButton onClick={handleClick}>
-                  {isLoading ? <div className="spinner" /> : "Analyse"}
+                  {awaitingResult ? <div className="spinner" /> : "Analyse"}
                 </SubmitButton>
               </div>
             </form>
