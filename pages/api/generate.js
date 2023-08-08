@@ -1,5 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { saveRecord, createReport } from "../../utils/db";
+import { getSession } from "@auth0/nextjs-auth0";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -8,6 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
   const userEmail = req.body.userEmail;
+  const session = getSession(req, res);
 
   if (!configuration.apiKey) {
     res.status(500).json({
@@ -36,7 +38,12 @@ export default async function (req, res) {
       temperature: 0.6,
     });
     console.log("Saving record");
-    await createReport(userEmail, completion.data.choices[0].message.content);
+    if (session && session.user) {
+      await createReport(userEmail, completion.data.choices[0].message.content);
+      res
+        .status(200)
+        .json({ result: completion.data.choices[0].message.content });
+    }
     res
       .status(200)
       .json({ result: completion.data.choices[0].message.content });
