@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  const userEmail = req.body.email;
+  const userEmail = req.body.userEmail;
 
   if (!configuration.apiKey) {
     res.status(500).json({

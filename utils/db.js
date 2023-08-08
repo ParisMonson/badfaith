@@ -1,7 +1,18 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const path = require("path");
+const fs = require("fs");
+const os = require("os");
+
 let cachedDb = null;
 
-const certificate = "X509-cert-1515475297667010122.pem";
+const certificate = process.env.MONGODB_SSL_CERT;
+
+const certificateContent = Buffer.from(certificate, "base64").toString("ascii");
+const tempCertPath = path.join(os.tmpdir(), "tempCert.pem");
+
+if (!fs.existsSync(tempCertPath)) {
+  fs.writeFileSync(tempCertPath, certificateContent);
+}
 
 export async function createReport(userEmail, reportData) {
   const db = await connectToDatabase();
@@ -43,8 +54,6 @@ export async function createUser(email) {
   return result;
 }
 
-/////
-
 export async function getUser(email) {
   const db = await connectToDatabase();
   const users = db.collection("users");
@@ -55,8 +64,6 @@ export async function getUser(email) {
   return user;
 }
 
-/////////////
-
 async function connectToDatabase() {
   if (cachedDb) {
     return cachedDb;
@@ -65,8 +72,8 @@ async function connectToDatabase() {
   const client = new MongoClient(
     "mongodb+srv://badfaith.i5h083e.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority",
     {
-      sslKey: certificate,
-      sslCert: certificate,
+      sslKey: tempCertPath,
+      sslCert: tempCertPath,
       serverApi: ServerApiVersion.v1,
     }
   );
