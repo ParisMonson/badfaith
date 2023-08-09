@@ -112,7 +112,7 @@ export default function Home() {
               </div>
             </form>
 
-            {result ? (
+            {result && (
               <div className="result_area flex flex-col items-center text-center">
                 <div
                   className={
@@ -123,7 +123,7 @@ export default function Home() {
                 </div>
                 <Report result={result} />
               </div>
-            ) : null}
+            )}
           </div>
         </main>
       </div>
