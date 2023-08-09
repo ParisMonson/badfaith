@@ -30,7 +30,7 @@
   @apply p-4 bg-gray-950 h-16 text-start flex items-center justify-between;
 }
 .sidebar {
-  @apply w-[284px] mt-16;
+  @apply min-w-[284px] mt-16;
 }
 
 h1 {

@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
   const userEmail = req.body.userEmail;
-  const session = getSession(req, res);
+  const session = await getSession(req, res);
 
   if (!configuration.apiKey) {
     res.status(500).json({
@@ -37,8 +37,9 @@ export default async function (req, res) {
       messages: [{ role: "user", content: generatePrompt(article) }],
       temperature: 0.6,
     });
-    console.log("Saving record");
+
     if (session && session.user) {
+      console.log("Saving record");
       await createReport(userEmail, completion.data.choices[0].message.content);
       res
         .status(200)
