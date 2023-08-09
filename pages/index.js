@@ -37,14 +37,11 @@ export default function Home() {
     }
   }
 
-  async function onSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setAwaitingResult(true);
-    let userEmail = "";
 
-    if (!isLoading && user) {
-      userEmail = user.email;
-    }
+    const userEmail = !isLoading && user ? user.email : "";
 
     try {
       const response = await fetch("/api/generate", {
@@ -52,7 +49,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ article: textAreaValue, userEmail: userEmail }),
+        body: JSON.stringify({ article: textAreaValue, userEmail }),
       });
 
       const data = await response.json();
@@ -66,7 +63,6 @@ export default function Home() {
       setResult(data.result);
       setTextAreaValue("");
     } catch (error) {
-      // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     } finally {
@@ -80,12 +76,6 @@ export default function Home() {
 
   const handleChange = (e) => {
     setTextAreaValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(e);
-    setTextAreaValue("");
   };
 
   return (
