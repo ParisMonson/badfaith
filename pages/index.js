@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import SubmitButton from "../components/SubmitButton";
 import TextAreaInput from "../components/TextAreaInput";
@@ -13,8 +13,29 @@ export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [result, setResult] = useState();
   const [awaitingResult, setAwaitingResult] = useState(false);
-  const [listItems] = useState(["Item 1", "Item 2", "Item 3"]);
+  const [reportHistory, setReportHistory] = useState([]);
   const { user, isLoading, error } = useUser();
+
+  // useEffect(() => {
+  //   if (!isLoading && user) {
+  //     getReports();
+  //   }
+  // }, [isLoading, user]);
+
+  async function getReports() {
+    try {
+      const response = await fetch("/api/reports", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setReportHistory(data);
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  }
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -52,7 +73,6 @@ export default function Home() {
       setAwaitingResult(false);
     }
   }
-  const titles = ["Item 1", "Item 2", "Item 3"];
 
   function handleClick() {
     console.log("Click");
@@ -78,7 +98,7 @@ export default function Home() {
       <Header />
 
       <div className="main_content">
-        <Sidebar listItems={titles} />
+        <Sidebar listItems={reportHistory} />
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>

@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const path = require("path");
 const fs = require("fs");
 const os = require("os");
@@ -35,10 +35,17 @@ export async function createReport(userEmail, reportData) {
   return result;
 }
 
-export async function getReports() {
+export async function getReports(user) {
+  console.log("Getting reports");
   const db = await connectToDatabase();
-  const collection = db.collection("sample_training");
+  const reports = db.collection("reports");
+  const objectId = new ObjectId(user.mongoUserId);
+  const query = { userId: objectId };
+  const result = await reports.find(query).toArray();
+  console.log(result);
+  return result;
 }
+
 export async function getSingleReport() {
   const db = await connectToDatabase();
   const collection = db.collection("sample_training");
