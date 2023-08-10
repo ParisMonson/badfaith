@@ -27,6 +27,7 @@ export async function createReport(userEmail, reportData) {
   const report = {
     content: reportData,
     userId: user._id,
+    createdAt: new Date(),
   };
 
   const result = await reports.insertOne(report);
@@ -57,7 +58,7 @@ export async function saveUser(data) {
 export async function createUser(email) {
   const db = await connectToDatabase();
   const users = db.collection("users");
-  const result = await users.insertOne({ email: email });
+  const result = await users.insertOne({ email: email, createdAt: new Date() });
   return result;
 }
 

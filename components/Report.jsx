@@ -1,5 +1,12 @@
-export default function Report({result}) {
+export default function Report({ report }) {
   return (
-    <p className={"report"}>{result}</p>
+    <div className="result_area flex flex-col items-center text-center">
+      <div
+        className={"text-white font-extrabold text-xl tracking-tight underline"}
+      >
+        {report === "" && Result}
+      </div>
+      <p className={"report"}>{report}</p>
+    </div>
   );
-};
+}

@@ -15,7 +15,6 @@ export default function Home() {
   const [awaitingResult, setAwaitingResult] = useState(false);
   const [reportHistory, setReportHistory] = useState([]);
   const { user, isLoading, error } = useUser();
-
   // useEffect(() => {
   //   if (!isLoading && user) {
   //     getReports();
@@ -112,18 +111,7 @@ export default function Home() {
               </div>
             </form>
 
-            {result && (
-              <div className="result_area flex flex-col items-center text-center">
-                <div
-                  className={
-                    "text-white font-extrabold text-xl tracking-tight underline"
-                  }
-                >
-                  Result
-                </div>
-                <Report result={result} />
-              </div>
-            )}
+            {result && <Report report={result} />}
           </div>
         </main>
       </div>
