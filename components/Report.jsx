@@ -4,7 +4,7 @@ export default function Report({ report }) {
       <div
         className={"text-white font-extrabold text-xl tracking-tight underline"}
       >
-        {report === "" && Result}
+        Result
       </div>
       <p className={"report"}>{report}</p>
     </div>

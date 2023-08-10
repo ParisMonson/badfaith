@@ -1,16 +1,10 @@
-export default function Sidebar({ listItems, title ='Reports', }) {
+import ReportHistoryList from "./ReportHistoryList";
+
+export default function Sidebar({ listItems, title = "Report History" }) {
   return (
-    <div className={"sidebar text-center border"} >
+    <div className={"sidebar text-center border"}>
       <h1 className={"text-xl underline"}>{title}</h1>
-      <ul>
-        {listItems?.map((item, index) => (
-          <li key={index} onClick={() => console.log(`Clicked ${item}`)}>
-            {item}
-          </li>
-        ))}
-      </ul>
+      <ReportHistoryList reportHistory={listItems} />
     </div>
   );
-};
-
-
+}

@@ -7,7 +7,6 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
-import AppNameLogo from "../components/AppNameLogo";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
@@ -35,6 +34,7 @@ export default function Home() {
       console.log("Error: ", err);
     }
   }
+  getReports();
 
   async function handleSubmit(event) {
     event.preventDefault();
