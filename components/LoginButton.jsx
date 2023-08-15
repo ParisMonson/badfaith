@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function LoginButton() {
   const handleRedirect = () => {
-    window.location.href = "/api/auth/callback";
+    window.location.href = "/api/auth/login";
   };
 
   return (
