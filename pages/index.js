@@ -29,7 +29,9 @@ export default function Home() {
         },
       });
       const data = await response.json();
-      setReportHistory(data);
+      if (data.isArray()) {
+        setReportHistory(data);
+      }
     } catch (err) {
       console.log("Error: ", err);
     }
