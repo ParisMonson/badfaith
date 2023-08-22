@@ -9,24 +9,24 @@ import ReportHistoryList from "./ReportHistoryList";
 
 const drawerWidth = 280;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
+// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+//   ({ theme, open }) => ({
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create("margin", {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen,
+//     }),
+//     marginLeft: `-${drawerWidth}px`,
+//     ...(open && {
+//       transition: theme.transitions.create("margin", {
+//         easing: theme.transitions.easing.easeOut,
+//         duration: theme.transitions.duration.enteringScreen,
+//       }),
+//       marginLeft: 0,
+//     }),
+//   })
+// );
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -39,10 +39,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Sidebar({ open, setOpen, listItems, setReport }) {
   const theme = useTheme();
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -61,31 +57,25 @@ export default function Sidebar({ open, setOpen, listItems, setReport }) {
       anchor="left"
       open={open}
     >
-      <DrawerHeader className="justify-between ml-12">
+      <DrawerHeader className="justify-between pl-12 bg-slate-950 text-white">
         <Typography variant="h6" noWrap component="div">
           Report History
         </Typography>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === "ltr" ? <ChevronLeftIcon /> : null}
+          {theme.direction === "ltr" ? (
+            <ChevronLeftIcon sx={{ color: "white" }} />
+          ) : null}
         </IconButton>
       </DrawerHeader>
       <Divider />
-
-      {listItems.length > 0 ? (
-        <ReportHistoryList reportHistory={listItems} setReport={setReport} />
-      ) : (
-        <p className="m-auto">Log in to save reports.</p>
-      )}
+      <div className="bg-slate-950 h-full text-slate-200 ">
+        {listItems.length > 0 ? (
+          <ReportHistoryList reportHistory={listItems} setReport={setReport} />
+        ) : (
+          <p className="m-auto">Log in to save reports.</p>
+        )}
+      </div>
     </Drawer>
-
-    // <div className={"sidebar text-center border"}>
-    //   <h1 className={"text-xl underline"}>{title}</h1>
-    //   {listItems.length > 0 ? (
-    //     <ReportHistoryList reportHistory={listItems} setReport={setReport} />
-    //   ) : (
-    //     <p className="m-auto">Log in to save reports.</p>
-    //   )}
-    // </div>
   );
 }
 
