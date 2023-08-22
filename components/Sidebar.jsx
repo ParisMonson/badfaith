@@ -3,6 +3,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ReportHistoryList from "./ReportHistoryList";
 
@@ -60,7 +61,10 @@ export default function Sidebar({ open, setOpen, listItems, setReport }) {
       anchor="left"
       open={open}
     >
-      <DrawerHeader>
+      <DrawerHeader className="justify-between ml-12">
+        <Typography variant="h6" noWrap component="div">
+          Report History
+        </Typography>
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === "ltr" ? <ChevronLeftIcon /> : null}
         </IconButton>
