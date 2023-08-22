@@ -1,27 +1,41 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-export default function ReportHistoryList({ reportHistory }) {
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+export default function ReportHistoryList({ reportHistory, setReport }) {
+  // Maintain the selected index in the state
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  const handleListItemClick = (event, index) => {
-    console.log("CLick");
+  // Handle click events on the list items
+  const handleListItemClick = (event, index, report) => {
     setSelectedIndex(index);
+    setReport(report.content);
   };
+
+  // Reverse the report history list for display, if it exists
+  const reversedReports = reportHistory?.slice().reverse();
 
   return (
     <List component="nav" aria-label="main mailbox folders">
-      {reportHistory?.reverse().map((report, index) => (
+      {reversedReports?.map((report, index) => (
         <ListItemButton
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
+          // Highlight the selected item based on its index
+          selected={selectedIndex === reversedReports.length - 1 - index}
+          onClick={(event) =>
+            handleListItemClick(
+              event,
+              reversedReports.length - 1 - index,
+              report
+            )
+          }
+          key={report._id}
         >
           <ListItemText
             className="truncate w-10"
+            // Display the first 50 characters of the report content
             primary={report.content.slice(0, 50)}
           />
         </ListItemButton>

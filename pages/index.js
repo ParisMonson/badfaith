@@ -10,15 +10,17 @@ import Report from "../components/Report";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
-  const [result, setResult] = useState();
   const [awaitingResult, setAwaitingResult] = useState(false);
   const [reportHistory, setReportHistory] = useState([]);
   const { user, isLoading, error } = useUser();
-  // useEffect(() => {
-  //   if (!isLoading && user) {
-  //     getReports();
-  //   }
-  // }, [isLoading, user]);
+  const [report, setReport] = useState();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      getReports();
+    }
+  }, [isLoading, user]);
 
   async function getReports() {
     try {
@@ -29,14 +31,12 @@ export default function Home() {
         },
       });
       const data = await response.json();
-      if (data.isArray()) {
-        setReportHistory(data);
-      }
+
+      setReportHistory(data);
     } catch (err) {
       console.log("Error: ", err);
     }
   }
-  // getReports();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -61,7 +61,7 @@ export default function Home() {
         );
       }
 
-      setResult(data.result);
+      setReport(data.result);
       setTextAreaValue("");
     } catch (error) {
       console.error(error);
@@ -86,10 +86,15 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      <Header />
+      <Header setOpen={setOpen} />
 
       <div className="main_content">
-        <Sidebar listItems={reportHistory} />
+        <Sidebar
+          open={open}
+          setOpen={setOpen}
+          listItems={reportHistory}
+          setReport={setReport}
+        />
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>
@@ -113,7 +118,7 @@ export default function Home() {
               </div>
             </form>
 
-            {result && <Report report={result} />}
+            {report && <Report report={report} />}
           </div>
         </main>
       </div>
