@@ -24,7 +24,7 @@
   background-color: #45a049;
 }
 .header {
-  @apply p-4 bg-gray-950 text-white text-xl fixed top-0 z-10 w-full flex justify-between h-16;
+  @apply bg-gray-950 text-white text-xl  z-10 w-full flex justify-between h-16;
 }
 .footer {
   @apply p-4 bg-gray-950 h-16 text-start flex items-center justify-between;

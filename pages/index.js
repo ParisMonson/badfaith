@@ -14,8 +14,7 @@ export default function Home() {
   const [reportHistory, setReportHistory] = useState([]);
   const { user, isLoading, error } = useUser();
   const [report, setReport] = useState();
-
-  console.log("Reports:", reportHistory);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!isLoading && user) {
@@ -87,10 +86,15 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      <Header />
+      <Header setOpen={setOpen} />
 
       <div className="main_content">
-        <Sidebar listItems={reportHistory} setReport={setReport} />
+        <Sidebar
+          open={open}
+          setOpen={setOpen}
+          listItems={reportHistory}
+          setReport={setReport}
+        />
 
         <main className={"main_container"}>
           <div className={"main_input_section"}>
