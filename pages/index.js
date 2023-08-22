@@ -36,7 +36,7 @@ export default function Home() {
       console.log("Error: ", err);
     }
   }
-  getReports();
+  // getReports();
 
   async function handleSubmit(event) {
     event.preventDefault();

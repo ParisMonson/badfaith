@@ -4,12 +4,18 @@ import { saveRecord, getUser, createUser } from "../../../utils/db";
 const afterCallback = async (req, res, session, state) => {
   try {
     let user = await getUser(session.user.email);
+    let mongoUserId;
 
-    if (!user) {
-      user = await createUser(session.user.email);
+    if (user) {
+      // If the user is found, extract the Mongo user ID and convert it to a string.
+      mongoUserId = user._id?.toString();
+    } else {
+      // If the user is not found, create a new user in the database.
+      const newUser = await createUser(session.user.email);
+
+      // Extract the Mongo user ID from the newly created user and convert it to a string.
+      mongoUserId = newUser.insertedId.toString();
     }
-
-    const mongoUserId = user._id.toString();
 
     session.user.mongoUserId = mongoUserId;
   } catch (err) {
