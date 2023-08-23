@@ -13,10 +13,42 @@ describe("Home", () => {
     render(<Home />);
 
     const heading = screen.getByRole("heading", {
-      name: /Badfaith/,
+      name: "Badfaith",
     });
-    console.log("Heading", heading);
+
+    const loginButton = screen.getByRole("button", {
+      name: "Log in",
+    });
+
+    const textInputArea = screen.getByRole("textbox");
 
     expect(heading).toBeInTheDocument();
+    expect(loginButton).toBeInTheDocument();
+    expect(textInputArea).toBeInTheDocument();
   });
 });
+
+// getByRole(
+//   // If you're using `screen`, then skip the container argument:
+//   container: HTMLElement,
+//   role: string,
+//   options?: {
+//     hidden?: boolean = false,
+//     name?: TextMatch,
+//     description?: TextMatch,
+//     selected?: boolean,
+//     busy?: boolean,
+//     checked?: boolean,
+//     pressed?: boolean,
+//     suggest?: boolean,
+//     current?: boolean | string,
+//     expanded?: boolean,
+//     queryFallbacks?: boolean,
+//     level?: number,
+//     value?: {
+//       min?: number,
+//       max?: number,
+//       now?: number,
+//       text?: TextMatch,
+//     }
+//   }): HTMLElement
