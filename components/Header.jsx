@@ -47,7 +47,11 @@ export default function Header({ open, setOpen }) {
             onClick={handleDrawerOpen}
             edge="start"
           >
-            <ViewSidebarIcon />
+            <ViewSidebarIcon
+              sx={{
+                marginRight: 1,
+              }}
+            />
           </IconButton>
           <Typography variant="h4" noWrap component="div">
             Badfaith
