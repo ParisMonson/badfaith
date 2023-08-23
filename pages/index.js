@@ -1,12 +1,14 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useTheme } from "@mui/material/styles";
 import SubmitButton from "../components/SubmitButton";
 import TextAreaInput from "../components/TextAreaInput";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
+import { Main } from "../components/Main";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
@@ -15,6 +17,7 @@ export default function Home() {
   const { user, isLoading, error } = useUser();
   const [report, setReport] = useState();
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     if (!isLoading && user) {
@@ -95,10 +98,8 @@ export default function Home() {
           listItems={reportHistory}
           setReport={setReport}
         />
-
-        <main className={"main_container"}>
+        <Main open={open} theme={theme}>
           <div className={"main_input_section"}>
-            {/* <AppNameLogo /> */}
             <h1
               className={
                 "text-xl font-extrabold  tracking-tight dark:text-zinc-200"
@@ -120,7 +121,7 @@ export default function Home() {
 
             {report && <Report report={report} />}
           </div>
-        </main>
+        </Main>
       </div>
 
       <Footer />

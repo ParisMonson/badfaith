@@ -6,9 +6,6 @@
   @apply m-0 p-0 bg-gray-900 text-white flex flex-col min-h-screen;
 }
 
-.main_container {
-  @apply bg-gray-900 text-white flex flex-grow overflow-auto justify-start  pt-16;
-}
 .main_input_section {
   @apply justify-start text-center align-middle flex flex-col flex-grow mt-20 mx-6;
 }
