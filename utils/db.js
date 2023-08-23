@@ -32,18 +32,15 @@ export async function createReport(userEmail, reportData) {
 
   const result = await reports.insertOne(report);
 
-  console.log("Inserted record with ID:", result.insertedId);
   return result;
 }
 
 export async function getReports(user) {
-  console.log("Getting reports");
   const db = await connectToDatabase();
   const reports = db.collection("reports");
   const objectId = new ObjectId(user.mongoUserId);
   const query = { userId: objectId };
   const result = await reports.find(query).toArray();
-  console.log(result);
   return result;
 }
 
@@ -66,9 +63,7 @@ export async function getUser(email) {
   const db = await connectToDatabase();
   const users = db.collection("users");
   const user = await users.findOne({ email: email });
-  if (user) {
-    console.log("User:", user.email);
-  }
+
   return user;
 }
 

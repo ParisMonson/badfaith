@@ -89,7 +89,7 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      <Header setOpen={setOpen} />
+      <Header open={open} setOpen={setOpen} />
 
       <div className="main_content">
         <Sidebar

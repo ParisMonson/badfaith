@@ -1,6 +1,6 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import LoginButton from "./LoginButton";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import LogoutButton from "./LogoutButton";
 import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
@@ -27,7 +27,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function Header({ setOpen }) {
+export default function Header({ open, setOpen }) {
   const { user, isLoading, error } = useUser();
 
   const handleDrawerOpen = () => {
@@ -40,21 +40,24 @@ export default function Header({ setOpen }) {
   return (
     <AppBar className="header" position="fixed" open={open}>
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          edge="start"
-          sx={""}
-        >
-          <ViewSidebarIcon />
-        </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          Badfaith
-        </Typography>
+        <div className="flex">
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={""}
+          >
+            <ViewSidebarIcon />
+          </IconButton>
+          <Typography variant="h4" noWrap component="div">
+            Badfaith
+          </Typography>
+        </div>
 
         <div className="flex gap-4">
           <h2>{user?.email}</h2>
+
           {!user ? (
             <LoginButton variant="outlined" />
           ) : (
