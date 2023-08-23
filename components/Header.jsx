@@ -46,7 +46,6 @@ export default function Header({ open, setOpen }) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={""}
           >
             <ViewSidebarIcon />
           </IconButton>
