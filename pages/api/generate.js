@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-import { saveRecord, createReport } from "../../utils/db";
+import { createReport } from "../../utils/db";
 import { getSession } from "@auth0/nextjs-auth0";
 
 const configuration = new Configuration({
@@ -35,11 +35,10 @@ export default async function (req, res) {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: generatePrompt(article) }],
-      temperature: 0.6,
+      temperature: 0.2,
     });
 
     if (session && session.user) {
-      console.log("Saving record");
       await createReport(userEmail, completion.data.choices[0].message.content);
       res
         .status(200)
