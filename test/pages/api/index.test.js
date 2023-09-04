@@ -20,11 +20,19 @@ describe("Home", () => {
       name: "Log in",
     });
 
+    const analyseButton = screen.getByRole("button", {
+      name: "Analyse",
+    });
+
     const textInputArea = screen.getByRole("textbox");
+
+    const header = screen.getByRole("banner");
 
     expect(heading).toBeInTheDocument();
     expect(loginButton).toBeInTheDocument();
     expect(textInputArea).toBeInTheDocument();
+    expect(header).toBeInTheDocument();
+    expect(analyseButton).toBeInTheDocument();
   });
 });
 
