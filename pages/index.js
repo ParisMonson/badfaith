@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
 import { Main } from "../components/Main";
-
+import { LandingPageBanner } from "../components/LandingPageBanner";
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [awaitingResult, setAwaitingResult] = useState(false);
@@ -89,8 +89,13 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
+      
+
       <Header open={open} setOpen={setOpen} />
 
+      <LandingPageBanner />
+
+    
       <div className="main_content">
         <Sidebar
           open={open}
