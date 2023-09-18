@@ -66,10 +66,9 @@ p {
   @apply text-white whitespace-pre-line;
 }
 .landing-banner {
-  @apply bg-gradient-to-tr from-gray-900 to-gray-800;
+  @apply bg-gradient-to-tr from-gray-900 to-gray-800 p-9;
   color: white;
   text-align: center;
-  padding: 10px 0;
   font-weight: bold;
   font-size: 1.5em;
 }
