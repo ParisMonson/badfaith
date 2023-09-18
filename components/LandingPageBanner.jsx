@@ -1,7 +1,12 @@
 export function LandingPageBanner() {
     return (
-      <div className="landing-banner flex h-[240px] mt-[72px]">
-        Welcome to Our Service! Check out our latest features below.
+      <div className="landing-banner flex flex-row h-[940px] mt-[72px] border-y-2">
+        <div>
+          Section A
+        </div>
+        <div>
+          Section B
+        </div>
       </div>
     );
   }

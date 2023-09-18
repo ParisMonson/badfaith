@@ -66,7 +66,7 @@ p {
   @apply text-white whitespace-pre-line;
 }
 .landing-banner {
-  background-color: #0070f3;  /* This is a blue color, you can adjust as needed */
+  @apply bg-gradient-to-tr from-gray-900 to-gray-800;
   color: white;
   text-align: center;
   padding: 10px 0;

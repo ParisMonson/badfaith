@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import Report from "../components/Report";
 import { Main } from "../components/Main";
 import { LandingPageBanner } from "../components/LandingPageBanner";
+
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [awaitingResult, setAwaitingResult] = useState(false);
