@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       margin: {
         '1/5': '20%',
+      },
+      fontFamily: {
+        HKGroteskRegular: ['var(--font-hk)'],
       }
     },
   },
