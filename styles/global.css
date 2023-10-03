@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 .body {
-  @apply m-0 p-0 bg-gray-900 text-white flex flex-col min-h-screen;
+  @apply m-0 p-0 bg-gradient-to-tr from-gray-900 to-gray-800 text-white flex flex-col min-h-screen;
 }
 
 .main_input_section {
@@ -21,7 +21,7 @@
   background-color: #45a049;
 }
 .header {
-  @apply bg-gray-950 text-white text-xl  z-10 w-full flex justify-between h-16;
+  @apply bg-gray-950 text-white text-xl w-full flex justify-between h-16;
 }
 .footer {
   @apply p-4 bg-gray-950 h-16 text-start flex items-center justify-between;
@@ -64,4 +64,11 @@ p {
 
 .report {
   @apply text-white whitespace-pre-line;
+}
+.landing-banner {
+  @apply p-9;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
 }

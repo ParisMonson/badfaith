@@ -9,37 +9,19 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Report from "../components/Report";
 import { Main } from "../components/Main";
+import { LandingPageBanner } from "../components/LandingPageBanner";
+import { useReports } from "../components/useReports";
 
 export default function Home() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [awaitingResult, setAwaitingResult] = useState(false);
-  const [reportHistory, setReportHistory] = useState([]);
   const { user, isLoading, error } = useUser();
   const [report, setReport] = useState();
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 
-  useEffect(() => {
-    if (!isLoading && user) {
-      getReports();
-    }
-  }, [isLoading, user]);
+  const reportHistory = useReports();
 
-  async function getReports() {
-    try {
-      const response = await fetch("/api/reports", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-
-      setReportHistory(data);
-    } catch (err) {
-      console.log("Error: ", err);
-    }
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -89,8 +71,13 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
+      
+
       <Header open={open} setOpen={setOpen} />
 
+      <LandingPageBanner />
+
+    
       <div className="main_content">
         <Sidebar
           open={open}
