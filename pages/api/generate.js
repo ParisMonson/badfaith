@@ -35,7 +35,7 @@ export default async function (req, res) {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: generatePrompt(article) }],
-      temperature: 0.2,
+      temperature: 0,
     });
 
     if (session && session.user) {
@@ -77,5 +77,10 @@ function generatePrompt(article) {
   has the above listed tactics. The higher its badfaith rating will be up to a max of 100. The report will highlight
   areas of the article that fit any of the above criteria and may also suggest for the user to do further research as
   certain things in the article may only be badfaith with further context. The report will then summarise at the end.
-  Article: ${article}`;
+  The report should be structured in different sections as follows:
+    1. Badfaith Score
+    2. Manipulation Tactics and Logical Fallacies
+    3. Summary
+
+  Here is the Article: ${article}`;
 }

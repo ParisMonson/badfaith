@@ -8,8 +8,8 @@ export function LandingPageBanner() {
               Ready to analyse some articles?
             </p>
           </div>
-          <div className="">
-            <p className="md:text-lg text-base max-w-xl font-thin">
+          <div>
+            <p className="text-xl max-w-xl font-thin">
               Paste in any article you want and we will analyze it for any
               logical fallacies such as Ad Hominem, Strawman, Appeal to
               Authority, False Dichotomy, Slippery Slope, Confirmation Bias, and

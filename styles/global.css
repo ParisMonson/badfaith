@@ -63,7 +63,7 @@ p {
 }
 
 .report {
-  @apply text-white whitespace-pre-line;
+  @apply text-white whitespace-pre-line text-xl ;
 }
 .landing-banner {
   @apply p-9;

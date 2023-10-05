@@ -89,7 +89,7 @@ export default function Home() {
           <div className={"main_input_section"}>
             <h1
               className={
-                "text-xl font-extrabold  tracking-tight dark:text-zinc-200"
+                "text-2xl font-extrabold  tracking-tight dark:text-zinc-200"
               }
             >
               Evaluate Document
