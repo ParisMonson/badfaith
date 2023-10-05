@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useTheme } from "@mui/material/styles";
 import SubmitButton from "../components/SubmitButton";
