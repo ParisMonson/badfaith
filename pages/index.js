@@ -92,7 +92,7 @@ export default function Home() {
                 "text-2xl font-extrabold  tracking-tight dark:text-zinc-200"
               }
             >
-              Evaluate Document
+              Evaluate Article
             </h1>
             <form
               className={"flex flex-col items-center m-3"}
