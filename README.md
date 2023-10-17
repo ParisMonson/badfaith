@@ -10,9 +10,6 @@ Deployed at: https://badfaith.io/
 ![Report Example](/screenshots/report-example.png)
 
 
-
-Deployed at: https://badfaith.io/
-
 ## Tech Stack
 ![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb&logoColor=white)
 ![Next.js](https://img.shields.io/badge/-Next.js-black?style=flat-square&logo=next.js&logoColor=white)
