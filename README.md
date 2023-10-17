@@ -93,9 +93,9 @@ function generatePrompt(articleTitle, article) {
 
 This function creates a prompt that:
 
-***1. Instructs ChatGPT***: It lays out a clear instruction for the model, letting it know the manipulation tactics and logical fallacies it should watch out for.
-***2. Sets Clear Criteria***: It ensures that ChatGPT understands the grading system based on the badfaith score.
-***3. Structures the Response***: It specifies the format in which the report should be generated, ensuring a consistent user experience.
+1. ***Instructs ChatGPT***: It lays out a clear instruction for the model, letting it know the manipulation tactics and logical fallacies it should watch out for.
+2. ***Sets Clear Criteria***: It ensures that ChatGPT understands the grading system based on the badfaith score.
+3. ***Structures the Response***: It specifies the format in which the report should be generated, ensuring a consistent user experience.
 
 ***Response Handling***
 Once the response is received from OpenAI:
