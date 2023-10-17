@@ -69,6 +69,8 @@ You would need to add your own OpenAi API key to the `.env.local` file if you wi
 
 Simply paste in the article title and content into the relavant sections of the app and press "Analyse".
 
+As mentioned above the current limitation is Vercels 10 second timelimit on serverless functions. THis results in promts often timing out if OpenAi takes to long to respond.
+
 
 
 
