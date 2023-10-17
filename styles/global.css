@@ -10,7 +10,7 @@
   @apply justify-start text-center align-middle flex flex-col flex-grow mt-20 mx-6;
 }
 .input_box {
-  @apply h-48 w-96 text-black bg-gray-300 p-1;
+  @apply h-48 w-96 text-black bg-gray-300 p-1 rounded-md;
 }
 .submit_btn {
   @apply bg-green-700 border-none text-white px-8 py-4 text-center;

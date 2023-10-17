@@ -19,6 +19,7 @@ export default function Home() {
   const [report, setReport] = useState();
   const [open, setOpen] = useState(false);
   const theme = useTheme();
+  const [titleValue, setTitleValue] = useState('');
 
   const reportHistory = useReports();
 
@@ -35,7 +36,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ article: textAreaValue, userEmail }),
+        body: JSON.stringify({ articleTitle: titleValue ,article: textAreaValue, userEmail }),
       });
 
       const data = await response.json();
@@ -48,6 +49,7 @@ export default function Home() {
 
       setReport(data.result);
       setTextAreaValue("");
+      setTitleValue("");
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -59,6 +61,9 @@ export default function Home() {
   function handleClick() {
     console.log("Click");
   }
+  const handleTitleChange = (e) => {
+    setTitleValue(e.target.value);
+};
 
   const handleChange = (e) => {
     setTextAreaValue(e.target.value);
@@ -98,6 +103,13 @@ export default function Home() {
               className={"flex flex-col items-center m-3"}
               onSubmit={handleSubmit}
             >
+              <input
+        type="text" 
+        placeholder="Title" 
+        className="mb-2 h-10 w-96 bg-gray-300 rounded-md text-black" 
+        value={titleValue} 
+        onChange={handleTitleChange}
+    />
               <TextAreaInput value={textAreaValue} onChange={handleChange} />
               <div className="m-3">
                 <SubmitButton onClick={handleClick}>

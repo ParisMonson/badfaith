@@ -20,7 +20,8 @@ export default async function (req, res) {
     });
     return;
   }
-
+  const articleTitle = req.body.articleTitle || "";
+  console.log("article title", articleTitle);
   const article = req.body.article || "";
   if (article.trim().length === 0) {
     res.status(400).json({
@@ -63,7 +64,7 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(article) {
+function generatePrompt(articleTitle, article) {
   return `You are going to analyse articles for the following manipulation tactics and logical fallacies.
   1. Ad Hominem
   2. Strawman
@@ -75,12 +76,12 @@ function generatePrompt(article) {
 
   Your job is to use all of your relevant expertise to generate a report with a "badfaith" score. The more the article
   has the above listed tactics. The higher its badfaith rating will be up to a max of 100. The report will highlight
-  areas of the article that fit any of the above criteria and may also suggest for the user to do further research as
+  areas of the article that fit any of the above criteria and may also suggest to do further research if
   certain things in the article may only be badfaith with further context. The report will then summarise at the end.
   The report should be structured in different sections as follows:
     1. Badfaith Score
     2. Manipulation Tactics and Logical Fallacies
     3. Summary
-
+  The article title is: ${articleTitle};
   Here is the Article: ${article}`;
 }
