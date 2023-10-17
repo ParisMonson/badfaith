@@ -3,6 +3,8 @@
 Deployed at: https://badfaith.io/
 (The project is deployed with Vercel and one of the current limitations is Vercel's 10 second serverless function limit for free users. This results in prompts often timing out if OpenAi API takes too long to respond, I'm trying to find a solution to this)
 
+## Screenshots
+
 ![Landing Page](/screenshots/landing-page.png)
 
 ![Text input area](/screenshots/article-input-area.png)
@@ -44,9 +46,9 @@ cd badfaith
 
 
 3. **Install dependencies**:
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 
 4. **Set up environment variables**:
