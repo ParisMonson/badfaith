@@ -1,4 +1,17 @@
-Logical Fallacy Detector
+# Logical Fallacy Detector
+
+Deployed at: https://badfaith.io/
+(The project is deployed with Vercel and one of the current limitations is Vercel's 10 second serverless function limit for free users. This results in prompts often timing out if OpenAi API takes too long to respond, I'm trying to find a solution to this)
+
+![Landing Page](/screenshots/landing-page.png)
+
+![Text input area](/screenshots/article-input-area.png)
+
+![Report Example](/screenshots/report-example.png)
+
+
+
+Deployed at: https://badfaith.io/
 
 ## Tech Stack
 ![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb&logoColor=white)
@@ -23,10 +36,44 @@ This project aims to assist users in identifying potential logical fallacies and
 ## Installation and Setup
 
 1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ParisMonson/badfaith.git
+   ```
+   
+2. **Navigate into the directory**:
+```bash
+cd badfaith
+```
+
+
+3. **Install dependencies**:
+```bash
+npm install
+```
+
+
+4. **Set up environment variables**:
+   The project uses an OpenAi API key variable, MongoDB API variables and auth0 variables. For local usage you would need to have your own OpenAi API key. MongoDb is used to store previous article analysis for logged in users so is not needed for local usage. Same with auth0.
+   
+You would need to add your own OpenAi API key to the `.env.local` file if you wish to test this locally.
+
+6. **Run locally**:
+   ```bash
+   npm run dev
+   ```
+
+   
+6. Visit `http://localhost:3000` to see the app running.
+
+## Usage
+
+Simply paste in the article title and content into the relavant sections of the app and press "Analyse".
 
 
 
 
-Deployed at: https://badfaith.io/
+
+
+
 
 
