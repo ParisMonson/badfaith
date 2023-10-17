@@ -24,8 +24,8 @@ export function LandingPageBanner() {
             <img
               src="openAiLogo.png"
               alt="OpenAI Logo"
-              width="246"
-              height="297"
+              width="221.4"
+              height="267.3"
             />
           </div>
           <div>
