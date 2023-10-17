@@ -1,4 +1,4 @@
-# Logical Fallacy Detector
+# Badfaith - Logical Fallacy Detector
 
 Deployed at: https://badfaith.io/
 (The project is deployed with Vercel and one of the current limitations is Vercel's 10 second serverless function limit for free users. This results in prompts often timing out if OpenAi API takes too long to respond, I'm trying to find a solution to this)
