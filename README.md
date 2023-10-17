@@ -70,6 +70,40 @@ Simply paste in the article title and content into the relavant sections of the 
 
 As mentioned above the current limitation is Vercels 10 second timelimit on serverless functions. THis results in promts often timing out if OpenAi takes to long to respond.
 
+## Under the Hood: Wrapping Around ChatGPT
+
+The core functionality of this application is centered around sending a request to OpenAI's ChatGPT with a unique prompt structure that allows us to analyze articles for logical fallacies and manipulation tactics. Here's a deeper dive into how it works:
+
+### Sending the Request
+
+The backend file sends a request to OpenAI using the `openai.createChatCompletion()` method. It communicates with the GPT-3.5-turbo model, known for its exceptional ability to generate human-like responses.
+
+### The Prompt
+
+The most important part of this interaction is the `generatePrompt` function:
+
+```javascript
+function generatePrompt(articleTitle, article) {
+  return `You are going to analyse articles for the following manipulation tactics and logical fallacies...
+  ...
+  The article title is: ${articleTitle};
+  Here is the Article: ${article}`;
+}
+```
+
+This function creates a prompt that:
+
+***1. Instructs ChatGPT***: It lays out a clear instruction for the model, letting it know the manipulation tactics and logical fallacies it should watch out for.
+***2. Sets Clear Criteria***: It ensures that ChatGPT understands the grading system based on the badfaith score.
+***3. Structures the Response***: It specifies the format in which the report should be generated, ensuring a consistent user experience.
+
+***Response Handling***
+Once the response is received from OpenAI:
+
+If there's an authenticated user session, it creates a report using the createReport utility function.
+The result is then sent as a JSON response to the frontend for display.
+
+
 
 
 
