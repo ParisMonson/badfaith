@@ -72,3 +72,27 @@ p {
   font-weight: bold;
   font-size: 1.5em;
 }
+
+.section-title {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.section-content {
+  margin-bottom: 20px;
+}
+
+.section-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.section-list li {
+  margin-bottom: 10px;
+  line-height: 1.5em;
+}
