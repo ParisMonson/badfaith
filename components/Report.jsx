@@ -9,7 +9,10 @@ export default function Report({ report }) {
         Badfaith Report
       </div>
       <div className="result_area flex flex-col items-center text-center border border-gray-300 p-4 shadow-lg">
-        <p className={"report"}>{report}</p>
+        <div
+          className={"report"}
+          dangerouslySetInnerHTML={{ __html: report }}
+        />
       </div>
     </div>
   );

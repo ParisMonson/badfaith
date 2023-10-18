@@ -21,7 +21,7 @@ export default async function (req, res) {
     return;
   }
   const articleTitle = req.body.articleTitle || "";
-  console.log("article title", articleTitle);
+
   const article = req.body.article || "";
   if (article.trim().length === 0) {
     res.status(400).json({
@@ -45,9 +45,11 @@ export default async function (req, res) {
         .status(200)
         .json({ result: completion.data.choices[0].message.content });
     } else {
+      const gptResponse = completion.data.choices[0].message.content;
+      const formattedText = formatGptResponse(gptResponse);
       res
         .status(200)
-        .json({ result: completion.data.choices[0].message.content });
+        .json({ result: formattedText });
     }
   } catch (error) {
     if (error.response) {
@@ -85,3 +87,45 @@ function generatePrompt(articleTitle, article) {
   The article title is: ${articleTitle};
   Here is the Article: ${article}`;
 }
+
+function formatGptResponse(responseText) {
+  const sections = responseText.split(/\s*(\d+\.)\s*/).filter(Boolean);
+
+  let formattedResponse = "";
+
+  for (let i = 0; i < sections.length; i += 2) {
+    const sectionNumber = sections[i];
+    const sectionContent = sections[i + 1].split(':').slice(1).join(':').trim();
+
+    switch (sectionNumber) {
+      case "1.":
+        formattedResponse += `<h2 class="section-title">Badfaith Score</h2><p class="section-content">${sectionContent}</p>`;
+        break;
+      case "2.":
+        formattedResponse += `<h2 class="section-title">Manipulation Tactics and Logical Fallacies</h2><ul class="section-list">`;
+        const items = sectionContent.split(/-(?=[A-Z])/).filter(Boolean);
+        for (let item of items) {
+          formattedResponse += `<li>${item.trim()}</li>`;
+        }
+        formattedResponse += `</ul>`;
+        break;
+      case "3.":
+        formattedResponse += `<h2 class="section-title">Summary</h2><p class="section-content">${sectionContent}</p>`;
+        break;
+      default:
+        formattedResponse += `<p class="section-content">${sectionNumber} ${sectionContent}</p>`;
+    }
+  }
+
+  return formattedResponse;
+}
+
+
+
+
+
+
+
+
+
+
