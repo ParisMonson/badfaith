@@ -85,8 +85,8 @@ export default function Home() {
 
       <div className="main_content">
         <Sidebar
-          open={open}
-          setOpen={setOpen}
+          open={headerOpen}
+          setOpen={setHeaderOpen}
           listItems={reportHistory}
           setReport={setReport}
         />
