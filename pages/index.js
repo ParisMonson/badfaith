@@ -90,7 +90,7 @@ export default function Home() {
           listItems={reportHistory}
           setReport={setReport}
         />
-        <Main open={open} theme={theme}>
+        <Main open={headerOpen} theme={theme}>
           <div className={"main_input_section"}>
             <h1
               className={
