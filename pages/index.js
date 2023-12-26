@@ -17,12 +17,11 @@ export default function Home() {
   const [awaitingResult, setAwaitingResult] = useState(false);
   const { user, isLoading, error } = useUser();
   const [report, setReport] = useState();
-  const [open, setOpen] = useState(false);
+  const [headerOpen, setHeaderOpen] = useState(false);
   const theme = useTheme();
-  const [titleValue, setTitleValue] = useState('');
+  const [titleValue, setTitleValue] = useState("");
 
   const reportHistory = useReports();
-
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -36,7 +35,11 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ articleTitle: titleValue ,article: textAreaValue, userEmail }),
+        body: JSON.stringify({
+          articleTitle: titleValue,
+          article: textAreaValue,
+          userEmail,
+        }),
       });
 
       const data = await response.json();
@@ -63,7 +66,7 @@ export default function Home() {
   }
   const handleTitleChange = (e) => {
     setTitleValue(e.target.value);
-};
+  };
 
   const handleChange = (e) => {
     setTextAreaValue(e.target.value);
@@ -76,13 +79,10 @@ export default function Home() {
         <link rel="icon" href="/dog.png" />
       </Head>
 
-      
-
-      <Header open={open} setOpen={setOpen} />
+      <Header open={headerOpen} setOpen={setHeaderOpen} />
 
       <LandingPageBanner />
 
-    
       <div className="main_content">
         <Sidebar
           open={open}
@@ -104,12 +104,12 @@ export default function Home() {
               onSubmit={handleSubmit}
             >
               <input
-        type="text" 
-        placeholder="Title" 
-        className="mb-2 h-10 w-96 bg-gray-300 rounded-md text-black" 
-        value={titleValue} 
-        onChange={handleTitleChange}
-    />
+                type="text"
+                placeholder="Title"
+                className="mb-2 h-10 w-96 bg-gray-300 rounded-md text-black"
+                value={titleValue}
+                onChange={handleTitleChange}
+              />
               <TextAreaInput value={textAreaValue} onChange={handleChange} />
               <div className="m-3">
                 <SubmitButton onClick={handleClick}>
