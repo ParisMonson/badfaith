@@ -20,7 +20,7 @@ export function LandingPageBanner() {
           </div>
         </div>
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
-          <div className="flex flex-row justify-end w-full">
+          <div className="flex flex-row justify-end w-full p-8">
             <img
               src="openAiLogo.png"
               alt="OpenAI Logo"
