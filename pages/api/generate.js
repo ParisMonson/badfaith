@@ -74,44 +74,51 @@ function generatePrompt(articleTitle, article) {
   6. Confirmation Bias
   7. Bandwagon
 
-  Your job is to use all of your relevant expertise to generate a report with a "badfaith" score. The more the article
-  has the above listed tactics. The higher its badfaith rating will be up to a max of 100. An article that contains no logical fallacies & manipulation tactics will therfore have a very low score. The report will highlight
+  Your job is to use all of your relevant expertise to generate a report with a "badfaith" score. The report will highlight
   areas of the article that fit any of the above criteria and in instances where context might significantly alter the interpretation, highlight these sections in the 'Contextual Analysis' section and suggest further research or provide potential alternative interpretations if applicable.
+  The more the article has the above listed tactics, the higher its badfaith rating will be up to a max of 100. Ensure that if an article contains none of the listed manipulation tactics and logical fallacies, it should receive a score close to 0. Only increase the score if and when such tactics are clearly identified.
   The report will then summarise at the end.
   The report should be structured in different sections as follows:
-    1. Badfaith Score
-    2. Manipulation Tactics and Logical Fallacies
-    3. Contextual Analysis
-    4. Summary
+    1* Badfaith Score
+    2* Manipulation Tactics and Logical Fallacies
+    3* Contextual Analysis
+    4* Summary
   Article title: ${articleTitle};
   Article content: ${article}`;
 }
 
 function formatGptResponse(responseText) {
-  const sections = responseText.split(/\s*(\d+\.)\s*/).filter(Boolean);
+  console.log("Response:", responseText);
+  const sections = responseText.split(/\s*(\d+\*)\s*/).filter(Boolean);
+
+  if (sections.length > 8) {
+    sections.pop();
+  }
 
   let formattedResponse = "";
 
   for (let i = 0; i < sections.length; i += 2) {
     const sectionNumber = sections[i];
+
     const sectionContent = sections[i + 1].split(":").slice(1).join(":").trim();
 
     switch (sectionNumber) {
-      case "1.":
+      case "1*":
         formattedResponse += `<h2 class="section-title">Badfaith Score</h2><p class="section-content">${sectionContent}</p>`;
         break;
-      case "2.":
+      case "2*":
         formattedResponse += `<h2 class="section-title">Manipulation Tactics and Logical Fallacies</h2><ul class="section-list">`;
-        const items = sectionContent.split(/-(?=[A-Z])/).filter(Boolean);
+
+        const items = sectionContent.split(/- (?=[A-Z])/).filter(Boolean);
         for (let item of items) {
           formattedResponse += `<li>${item.trim()}</li>`;
         }
         formattedResponse += `</ul>`;
         break;
-      case "3.":
+      case "3*":
         formattedResponse += `<h2 class="section-title">Contextual Analysis</h2><p class="section-content">${sectionContent}</p>`;
         break;
-      case "4.":
+      case "4*":
         formattedResponse += `<h2 class="section-title">Summary</h2><p class="section-content">${sectionContent}</p>`;
         break;
       default:
