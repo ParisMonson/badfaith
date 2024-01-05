@@ -39,7 +39,7 @@ h2 {
 }
 
 p {
-  @apply text-slate-200 font-serif;
+  @apply text-slate-300 font-serif;
 }
 
 @keyframes spin {
@@ -63,7 +63,7 @@ p {
 }
 
 .report {
-  @apply text-white whitespace-pre-line text-xl ;
+  @apply text-white whitespace-pre-line text-xl;
 }
 .landing-banner {
   @apply p-9;
@@ -74,6 +74,7 @@ p {
 }
 
 .section-title {
+  @apply font-HKGroteskRegular;
   font-size: 1.5em;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -82,17 +83,19 @@ p {
 }
 
 .section-content {
+  @apply font-HKGroteskRegular;
   margin-bottom: 20px;
 }
 
 .section-list {
-  list-style-type: disc;
+  @apply font-HKGroteskRegular;
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
 .section-list li {
+  @apply text-slate-300;
   margin-bottom: 10px;
   line-height: 1.5em;
 }
