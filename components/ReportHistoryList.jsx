@@ -34,9 +34,10 @@ export default function ReportHistoryList({ reportHistory, setReport }) {
           key={report._id}
         >
           <ListItemText
-            className="truncate w-10"
+            disableTypography
+            className="truncate"
             // Display the first 50 characters of the report content
-            primary={report.content.slice(0, 50)}
+            primary={report.title}
           />
         </ListItemButton>
       ))}
