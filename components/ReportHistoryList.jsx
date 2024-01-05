@@ -38,6 +38,9 @@ export default function ReportHistoryList({ reportHistory, setReport }) {
             className="truncate"
             // Display the first 50 characters of the report content
             primary={report.title}
+            sx={{
+              fontSize: 18,
+            }}
           />
         </ListItemButton>
       ))}
