@@ -20,7 +20,7 @@ export default async function (req, res) {
     });
     return;
   }
-  const articleTitle = req.body.articleTitle || "";
+  const articleTitle = req.body.articleTitle || req.body.article.slice(0, 50);
 
   const article = req.body.article || "";
   if (article.trim().length === 0) {
@@ -43,7 +43,7 @@ export default async function (req, res) {
     const formattedText = formatGptResponse(gptResponse);
 
     if (session && session.user) {
-      await saveReport(userEmail, formattedText);
+      await saveReport(userEmail, formattedText, articleTitle);
 
       res.status(200).json({ result: formattedText });
     } else {

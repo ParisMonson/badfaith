@@ -14,7 +14,7 @@ if (!fs.existsSync(tempCertPath)) {
   fs.writeFileSync(tempCertPath, certificateContent);
 }
 
-export async function saveReport(userEmail, reportData) {
+export async function saveReport(userEmail, reportData, articleTitle) {
   const db = await connectToDatabase();
   const reports = db.collection("reports");
   const users = db.collection("users");
@@ -26,6 +26,7 @@ export async function saveReport(userEmail, reportData) {
 
   const report = {
     content: reportData,
+    title: articleTitle,
     userId: user._id,
     createdAt: new Date(),
   };
