@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-import { createReport } from "../../utils/db";
+import { saveReport } from "../../utils/db";
 import { getSession } from "@auth0/nextjs-auth0";
 
 const configuration = new Configuration({
@@ -39,17 +39,15 @@ export default async function (req, res) {
       temperature: 0,
     });
 
+    const gptResponse = completion.data.choices[0].message.content;
+    const formattedText = formatGptResponse(gptResponse);
+
     if (session && session.user) {
-      await createReport(userEmail, completion.data.choices[0].message.content);
-      res
-        .status(200)
-        .json({ result: completion.data.choices[0].message.content });
+      await saveReport(userEmail, formattedText);
+
+      res.status(200).json({ result: formattedText });
     } else {
-      const gptResponse = completion.data.choices[0].message.content;
-      const formattedText = formatGptResponse(gptResponse);
-      res
-        .status(200)
-        .json({ result: formattedText });
+      res.status(200).json({ result: formattedText });
     }
   } catch (error) {
     if (error.response) {
@@ -95,7 +93,7 @@ function formatGptResponse(responseText) {
 
   for (let i = 0; i < sections.length; i += 2) {
     const sectionNumber = sections[i];
-    const sectionContent = sections[i + 1].split(':').slice(1).join(':').trim();
+    const sectionContent = sections[i + 1].split(":").slice(1).join(":").trim();
 
     switch (sectionNumber) {
       case "1.":
@@ -119,13 +117,3 @@ function formatGptResponse(responseText) {
 
   return formattedResponse;
 }
-
-
-
-
-
-
-
-
-
-
