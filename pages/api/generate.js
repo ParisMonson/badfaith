@@ -75,15 +75,16 @@ function generatePrompt(articleTitle, article) {
   7. Bandwagon
 
   Your job is to use all of your relevant expertise to generate a report with a "badfaith" score. The more the article
-  has the above listed tactics. The higher its badfaith rating will be up to a max of 100. The report will highlight
-  areas of the article that fit any of the above criteria and may also suggest to do further research if
-  certain things in the article may only be badfaith with further context. The report will then summarise at the end.
+  has the above listed tactics. The higher its badfaith rating will be up to a max of 100. An article that contains no logical fallacies & manipulation tactics will therfore have a very low score. The report will highlight
+  areas of the article that fit any of the above criteria and in instances where context might significantly alter the interpretation, highlight these sections in the 'Contextual Analysis' section and suggest further research or provide potential alternative interpretations if applicable.
+  The report will then summarise at the end.
   The report should be structured in different sections as follows:
     1. Badfaith Score
     2. Manipulation Tactics and Logical Fallacies
-    3. Summary
-  The article title is: ${articleTitle};
-  Here is the Article: ${article}`;
+    3. Contextual Analysis
+    4. Summary
+  Article title: ${articleTitle};
+  Article content: ${article}`;
 }
 
 function formatGptResponse(responseText) {
@@ -108,6 +109,9 @@ function formatGptResponse(responseText) {
         formattedResponse += `</ul>`;
         break;
       case "3.":
+        formattedResponse += `<h2 class="section-title">Contextual Analysis</h2><p class="section-content">${sectionContent}</p>`;
+        break;
+      case "4.":
         formattedResponse += `<h2 class="section-title">Summary</h2><p class="section-content">${sectionContent}</p>`;
         break;
       default:
