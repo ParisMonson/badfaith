@@ -105,7 +105,7 @@ export default function Home() {
             >
               <input
                 type="text"
-                placeholder="Title"
+                placeholder="Title(optional)"
                 className="mb-2 h-10 w-96 bg-gray-300 rounded-md text-black"
                 value={titleValue}
                 onChange={handleTitleChange}
