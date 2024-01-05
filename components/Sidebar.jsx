@@ -68,11 +68,15 @@ export default function Sidebar({ open, setOpen, listItems, setReport }) {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <div className="bg-slate-950 h-full text-slate-200 ">
+      <div className="bg-slate-950 h-full text-slate-200 flex flex-col justify-center ">
         {listItems.length > 0 ? (
           <ReportHistoryList reportHistory={listItems} setReport={setReport} />
         ) : (
-          <p className="m-auto">Log in to save reports.</p>
+          <div className="text-center">
+            <p className="m-auto text-slate-400 text-lg">
+              Log in to save reports.
+            </p>
+          </div>
         )}
       </div>
     </Drawer>
